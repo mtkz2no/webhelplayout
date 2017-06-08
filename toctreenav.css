@@ -1,0 +1,23 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css');
+
+nav i.collapsed ~ ul {
+ display:none;
+}
+nav i:before {
+ display: inline-block; width:1em;
+ font-family: FontAwesome;
+ content: "\f107";/*down f107 f078*/
+}
+nav i.collapsed:before {
+ content: "\f105";/*> f105 f054*/
+}
+nav i.none:before {
+ content: "";
+}
+nav li {
+ cursor:pointer;
+ position: relative; left: -0.5em;
+}
+nav ul {
+ list-style:none;
+}

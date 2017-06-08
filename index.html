@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>flexbox</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+-->
+<script src="toctreenav.js"></script>
+<link href="toctreenav.css" rel="stylesheet">
+
+<style>
+main {
+ margin-left: 1em;
+}
+
+.button {
+ cursor: pointer;
+}
+.button:before {
+  content: '\f0c9';
+  font: 1em fontawesome;
+}
+</style>
+<style>
+/*
+https://www.bitovi.com/blog/use-flexbox-to-create-a-sticky-header-and-sidebar-with-flexible-content?hs_amp=true
+*/
+html {
+ height: 100%;
+}
+body {
+ font-family: GillSans;
+ height: 100%;   
+ overflow: hidden;
+ /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+ margin: 0px;
+ /*removes default style*/
+ display: flex;
+ /*enables flex content for its children*/
+ box-sizing: border-box;
+}
+.column {
+ height: 100%;
+ /*allows both columns to span the full height of the browser window*/
+ display: flex;
+ flex-direction: column;
+ /*places the left and right headers above the bottom content*/
+}
+#left {
+ flex-shrink: 0;
+ /*makes sure that content is not cut off in a smaller browser window*/
+}
+header {
+ background: black; color: gray;
+ text-align: center; height:2em;
+}
+.top-left {
+ flex-shink: 0; 
+}
+.top-right {
+ flex-shrink: 0;
+ display: inline-flex;
+}
+header i {
+ vertical-align: middle;
+}
+header ul {
+ display: inline-flex;
+ list-style: none;
+}
+.bottom {
+ flex-grow: 1;
+ /*ensures that the container will take up the full height of the parent container*/
+ overflow-y: auto;
+ /*adds scroll to this container*/
+}
+#left .bottom {
+ background: deepskyblue;
+ color: white;
+}
+</style>
+</head>
+
+<body>
+<div id="left" class="column">
+<header class="top-left">
+<i class="fa fa-search" aria-hidden="true"></i>
+HL</header>
+<div class="bottom">
+<nav>
+<ul>
+<li>
+<a href="#1">Lorem ipsum</a>
+<ul>
+<li><a>Lorem ipsum</a></li>
+<li><a>Lorem ipsum</a>
+<ul>
+<li><a>Lorem ipsum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#2">Lorem ipsum</a></li>
+<li>
+<a href="#1">Lorem ipsum</a>
+<ul>
+<li><a>Lorem ipsum</a></li>
+</ul>
+</li>
+<li>
+<a href="#1">Lorem ipsum</a>
+<ul>
+<li><a>Lorem ipsum</a></li>
+</ul>
+</li>
+<li>
+<a href="#1">Lorem ipsum</a>
+<ul>
+<li><a>Lorem ipsum</a></li>
+<li><a>Lorem ipsum</a></li>
+<li><a>Lorem ipsum</a></li>
+</ul>
+</li>
+<li>
+<a>Lorem ipsum</a></li>
+<li>
+<a>Lorem ipsum</a></li>
+</ul>
+</nav>
+</div>
+</div>
+
+<div id="right" class="column">
+<header class="top-right">
+<a class="button"></a>
+<i class="fa fa-cog" aria-hidden="true"></i>
+<i class="fa fa-refresh" aria-hidden="true"></i>
+HR</header>
+<div class="bottom">
+<main>
+<h1 id="1">Lorem ipsum</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu massa faucibus, ornare enim nec, iaculis nisi. Morbi a blandit dui. Cras eget erat eu mi venenatis euismod. Nulla sollicitudin fringilla augue, non accumsan urna tincidunt nec. In libero tortor, mollis at justo sit amet, placerat finibus tellus. In non lacinia nibh. Curabitur blandit posuere dapibus. Nullam porta arcu in lacus dignissim, eu bibendum ipsum venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur erat non nibh sagittis, nec faucibus mi sollicitudin. Ut sed mi diam.</p>
+</main>
+</div>
+</div> 
+</body>
+</html>
