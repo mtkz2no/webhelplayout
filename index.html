@@ -13,19 +13,6 @@
 <link href="toctreenav.css" rel="stylesheet">
 
 <style>
-main {
- margin-left: 1em;
-}
-
-.button {
- cursor: pointer;
-}
-.button:before {
-  content: '\f0c9';
-  font: 1em fontawesome;
-}
-</style>
-<style>
 /*
 https://www.bitovi.com/blog/use-flexbox-to-create-a-sticky-header-and-sidebar-with-flexible-content?hs_amp=true
 */
@@ -45,32 +32,31 @@ body {
 }
 .column {
  height: 100%;
+ min-height: 100vh;
  /*allows both columns to span the full height of the browser window*/
  display: flex;
  flex-direction: column;
  /*places the left and right headers above the bottom content*/
 }
 #left {
- flex-shrink: 0;
- /*makes sure that content is not cut off in a smaller browser window*/
+ flex-shrink: 0;/*content is not cut off in a smaller browser window*/
 }
-header {
+.top {
+ flex-shink: 0;
+ min-height: 2em;
+ align-items: center;
+ justyify-content: space-around;
+ display: inline-flex;
+ padding: 0em 1em;
+ font-size: 1em;
  background: black; color: gray;
- text-align: center; height:2em;
 }
-.top-left {
- flex-shink: 0; 
-}
-.top-right {
- flex-shrink: 0;
- display: inline-flex;
-}
-header i {
- vertical-align: middle;
-}
-header ul {
- display: inline-flex;
- list-style: none;
+.title {
+ margin: 0em 1em;
+ font-weight:bold;
+ font-size: large;
+ text-overflow: ellipsis;
+ white-space: nowrap;
 }
 .bottom {
  flex-grow: 1;
@@ -82,14 +68,42 @@ header ul {
  background: deepskyblue;
  color: white;
 }
+#right .bottom {
+ padding-left: 1em;
+}
+</style>
+<style>
+@media screen and (max-width:400px){
+ #left { display: none; }
+}
+#left.show {
+ display: flex;
+}
+#hideleft {
+ display: none; margin-right:1em;
+}
+#hideleft.show {
+ display: inline-flex;
+}
+</style>
+<style>
+#showleft:before {
+ content: '\f0c9';
+ font-family: fontawesome;
+}
+#showleft {
+ cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 <div id="left" class="column">
-<header class="top-left">
+<header class="top top-left">
+<i id="hideleft" class="fa fa-times" aria-hidden="true"></i>
 <i class="fa fa-search" aria-hidden="true"></i>
-HL</header>
+<input type="textbox" />
+</header>
 <div class="bottom">
 <nav>
 <ul>
@@ -136,11 +150,13 @@ HL</header>
 </div>
 
 <div id="right" class="column">
-<header class="top-right">
-<a class="button"></a>
+<header class="top top-right">
+<a id="showleft"></a>
+<span class="title">Lorem ipsum</span>
+<!--
 <i class="fa fa-cog" aria-hidden="true"></i>
-<i class="fa fa-refresh" aria-hidden="true"></i>
-HR</header>
+<i class="fa fa-refresh" aria-hidden="true"></i>-->
+</header>
 <div class="bottom">
 <main>
 <h1 id="1">Lorem ipsum</h1>
