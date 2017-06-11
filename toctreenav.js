@@ -7,7 +7,7 @@ $(document).ready(function(){
   }
  });
 
- $('nav i').click(function(){
+ $('nav i').on('click',function(){
   $(this).toggleClass('collapsed');
  });
  $('#showleft').click(function(){
