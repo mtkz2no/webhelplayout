@@ -1,13 +1,13 @@
 $(document).ready(function(){
- $("nav li").each(function(){
+ $(".toctreenav li").each(function(){
   if($(this).children('ul').length){
-   $(this).prepend('<i/>');
+   $(this).prepend('<i class="collapsed"/>');
   } else {
    $(this).prepend('<i class="none"/>');
   }
  });
 
- $('nav i').on('click',function(){
+ $('.toctreenav i').on('click',function(){
   $(this).toggleClass('collapsed');
  });
  $('#showleft').click(function(){
