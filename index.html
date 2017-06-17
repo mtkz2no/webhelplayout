@@ -16,12 +16,28 @@
 /*
 https://www.bitovi.com/blog/use-flexbox-to-create-a-sticky-header-and-sidebar-with-flexible-content?hs_amp=true
 */
+:root {
+ --bgcolor: #404040;
+ --headerbgcolor: #303030;
+ --headercolor: white;
+ --sidecolor: gray;
+}
+#left a {
+ color: var(--sidecolor);
+}
+#left a:visited {
+ color:darkgray;
+}
+#showleft, #hideleft {
+ color: deepskyblue;
+}
+
 html {
  height: 100%;
 }
 body {
  font-family: GillSans;
- height: 100%;
+ height: 100%;   
  overflow: hidden;
  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
  margin: 0px;
@@ -40,7 +56,7 @@ body {
 }
 #left {
  flex-shrink: 0;/*content is not cut off in a smaller browser window*/
- max-width: 80%;
+ max-width: 30%;
 }
 .top {
  flex-shink: 0;
@@ -50,8 +66,8 @@ body {
  display: inline-flex;
  padding: 0em 1em;
  font-size: 1.25em;
- background: black;
- color: white;
+ background: var(--headerbgcolor);
+ color: var(--headercolor);
 }
 .title {
  margin: 0em 1em;
@@ -67,16 +83,22 @@ body {
  /*adds scroll to this container*/
 }
 #left .bottom {
- background: deepskyblue;
- color: white;
+ background: var(--bgcolor);
+ color: var(--sidecolor);
 }
 #right .bottom {
  padding-left: 1em;
 }
+i + input {
+ margin-left: 0.5em;
+}
 </style>
+
 <style>
 @media screen and (max-width:567px){
- #left { display: none; }
+ #left {
+  display: none; max-width:80%;
+ }
 }
 #left.show {
  display: flex;
@@ -88,15 +110,6 @@ body {
  display: inline-flex;
 }
 </style>
-<style>
-#showleft:before {
- content: '\f0c9';
- font-family: fontawesome;
-}
-#showleft {
- cursor: pointer;
-}
-</style>
 </head>
 
 <body>
@@ -104,10 +117,10 @@ body {
 <header class="top top-left">
 <i id="hideleft" class="fa fa-times" aria-hidden="true"></i>
 <i class="fa fa-search" aria-hidden="true"></i>
-<input type="textbox" />
+<input type="textbox" placeholder="search" />
 </header>
 <div class="bottom">
-<nav>
+<nav class="toctreenav">
 <ul>
 <li>
 <a href="#1">Lorem ipsum</a>
@@ -153,7 +166,7 @@ body {
 
 <div id="right" class="column">
 <header class="top top-right">
-<a id="showleft"></a>
+<i id="showleft" class="fa fa-bars" aria-hidden="true"></i>
 <span class="title">Lorem ipsum</span>
 <!--
 <i class="fa fa-cog" aria-hidden="true"></i>
@@ -165,6 +178,6 @@ body {
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu massa faucibus, ornare enim nec, iaculis nisi. Morbi a blandit dui. Cras eget erat eu mi venenatis euismod. Nulla sollicitudin fringilla augue, non accumsan urna tincidunt nec. In libero tortor, mollis at justo sit amet, placerat finibus tellus. In non lacinia nibh. Curabitur blandit posuere dapibus. Nullam porta arcu in lacus dignissim, eu bibendum ipsum venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur erat non nibh sagittis, nec faucibus mi sollicitudin. Ut sed mi diam.</p>
 </main>
 </div>
-</div>
+</div> 
 </body>
 </html>
