@@ -1,0 +1,15 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css');
+
+.favbtn:before {
+ font-family: fontawesome;
+ content: "\f006";
+ font-size: smaller;
+ color: lightgray;
+}
+.favorite:before {
+ content: "\f005";
+ color: gold;
+}
+.unfavor {
+ margin-left:1em;
+}
